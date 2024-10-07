@@ -1,0 +1,2865 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/18/2024 3:35:06 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HARBSKIIIII"
+  DTS:CreatorName="HARBSKIIIII\Ahmed"
+  DTS:DTSID="{5A11AECE-EAF3-4C01-BC9E-68700D414D72}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{D3CE0097-6F42-4EA7-954F-F127CA547F00}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{8D23597F-9522-4A28-8714-FD39E1684C25}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ahmed\Desktop\PRO\SupplyChainTables.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+      DTS:CreationName="OLEDB"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{9F49FC0E-211B-4E5B-B37F-3BDB571094D7}"
+      DTS:ObjectName="HARBSKIIIII.Supply Chain">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=HARBSKIIIII;Initial Catalog=Supply Chain;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{9F49FC0E-211B-4E5B-B37F-3BDB571094D7}HARBSKIIIII.Supply Chain;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HARBSKIIIII.Supply_Chain_DB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AF1F55F3-FF46-4E2C-A899-F3CEE237C29D}"
+      DTS:ObjectName="HARBSKIIIII.Supply_Chain_DB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=HARBSKIIIII;Initial Catalog=Supply_Chain_DB;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{AF1F55F3-FF46-4E2C-A899-F3CEE237C29D}HARBSKIIIII.Supply_Chain_DB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Customer"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{562b8310-7ae7-4589-9f8d-4ed906fcd7bb}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Customer"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Customer\Customer"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Customer"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customer\Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  connectionManagerRefId="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Customer\Customer.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].Columns[Segment_ID]"
+                      cachedDataType="r8"
+                      cachedName="Segment_ID"
+                      externalMetadataColumnId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Segment_ID]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Segment_ID]" />
+                    <inputColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].Columns[Customer_ID]"
+                      cachedDataType="r8"
+                      cachedName="Customer_ID"
+                      externalMetadataColumnId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Customer_ID]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Customer_ID]" />
+                    <inputColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].Columns[Cust_Fname]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Cust_Fname"
+                      externalMetadataColumnId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Fname]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Fname]" />
+                    <inputColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].Columns[Cust_Lname]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Cust_Lname"
+                      externalMetadataColumnId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Lname]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Lname]" />
+                    <inputColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].Columns[Cust_Street]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Cust_Street"
+                      externalMetadataColumnId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Cust_Street]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Street]" />
+                    <inputColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].Columns[Cust_City]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Cust_City"
+                      externalMetadataColumnId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Cust_City]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_City]" />
+                    <inputColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].Columns[Cust_State]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Cust_State"
+                      externalMetadataColumnId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Cust_State]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_State]" />
+                    <inputColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].Columns[Cust_Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Cust_Country"
+                      externalMetadataColumnId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Cust_Country]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Country]" />
+                    <inputColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].Columns[Zipcode]"
+                      cachedDataType="r8"
+                      cachedName="Zipcode"
+                      externalMetadataColumnId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Zipcode]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Zipcode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Segment_ID]"
+                      dataType="i4"
+                      name="Segment_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Customer_ID]"
+                      dataType="i4"
+                      name="Customer_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Fname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fname" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Lname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Lname" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Cust_Street]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_Street" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Cust_City]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_City" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Cust_State]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_State" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Cust_Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_Country" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Customer.Inputs[OLE DB Destination Input].ExternalColumns[Zipcode]"
+                      dataType="i4"
+                      name="Zipcode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Customer\Customer.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Customer\Customer.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer\Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customer\Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customer\Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customer\Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Customer\Supply-Chain-Customer"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Supply-Chain-Customer"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Customer$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customer\Supply-Chain-Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Segment_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Segment_ID]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Segment_ID]"
+                      name="Segment_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Customer_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Customer_ID]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Customer_ID]"
+                      name="Customer_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Fname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_Fname]"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Fname]"
+                      name="Cust_Fname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Lname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_Lname]"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Lname]"
+                      name="Cust_Lname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Street]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_Street]"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Street]"
+                      name="Cust_Street"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_City]"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_City]"
+                      name="Cust_City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_State]"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_State]"
+                      name="Cust_State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_Country]"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Cust_Country]"
+                      name="Cust_Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Zipcode]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Zipcode]"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].Columns[Zipcode]"
+                      name="Zipcode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Segment_ID]"
+                      dataType="r8"
+                      name="Segment_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Customer_ID]"
+                      dataType="r8"
+                      name="Customer_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_Fname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_Fname" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_Lname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_Lname" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_Street]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_Street" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_City]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_City" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_State]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_State" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Cust_Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cust_Country" />
+                    <externalMetadataColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output].ExternalColumns[Zipcode]"
+                      dataType="r8"
+                      name="Zipcode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Customer_ID]"
+                      dataType="r8"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Customer_ID]"
+                      name="Customer_ID" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Segment_ID]"
+                      dataType="r8"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Segment_ID]"
+                      name="Segment_ID" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_Fname]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_Fname]"
+                      name="Cust_Fname" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_Lname]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_Lname]"
+                      name="Cust_Lname" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_Street]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_Street]"
+                      name="Cust_Street" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_City]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_City]"
+                      name="Cust_City" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_State]"
+                      name="Cust_State" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Cust_Country]"
+                      name="Cust_Country" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Zipcode]"
+                      dataType="r8"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[Zipcode]"
+                      name="Zipcode" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Customer.Paths[Excel Source Output]"
+              endId="Package\Customer\Customer.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Customer\Supply-Chain-Customer.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Order"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{59c44ad7-167c-4ad6-a784-6ae90d180fe4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Order"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Order\Order"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Order"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Order]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Order\Order.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  connectionManagerRefId="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Order\Order.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Order Id]"
+                      cachedDataType="r8"
+                      cachedName="Order Id"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order Id]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Customer Id]"
+                      cachedDataType="r8"
+                      cachedName="Customer Id"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Cust_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Customer Id]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Store#Store_ID]"
+                      cachedDataType="r8"
+                      cachedName="Store#Store_ID"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Store_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Store#Store_ID]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Market#1#Market_ID]"
+                      cachedDataType="r8"
+                      cachedName="Market#1#Market_ID"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Market_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Market#1#Market_ID]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Payment#Payment_ID]"
+                      cachedDataType="r8"
+                      cachedName="Payment#Payment_ID"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Payment_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Payment#Payment_ID]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Delivery_Status#Delivery_Status_ID]"
+                      cachedDataType="r8"
+                      cachedName="Delivery_Status#Delivery_Status_ID"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Delivery_Status_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Delivery_Status#Delivery_Status_ID]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Order_Status#Order_Status_ID]"
+                      cachedDataType="r8"
+                      cachedName="Order_Status#Order_Status_ID"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_State_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order_Status#Order_Status_ID]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Order_Region#Order_Region_ID]"
+                      cachedDataType="r8"
+                      cachedName="Order_Region#Order_Region_ID"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_Region_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order_Region#Order_Region_ID]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Shipping_Mode#Ship_Mode_ID]"
+                      cachedDataType="r8"
+                      cachedName="Shipping_Mode#Ship_Mode_ID"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Mode_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Shipping_Mode#Ship_Mode_ID]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Order City]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Order City"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_City]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order City]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Order State]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Order State"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_State]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order State]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Order Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Order Country"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_Country]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order Country]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[order date (DateOrders)]"
+                      cachedDataType="date"
+                      cachedName="order date (DateOrders)"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_Date]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[order date (DateOrders)]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[shipping date (DateOrders)]"
+                      cachedDataType="date"
+                      cachedName="shipping date (DateOrders)"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Shipping_Date]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Days for shipping (real)]"
+                      cachedDataType="r8"
+                      cachedName="Days for shipping (real)"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Real_DayForShipping]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Days for shipping (real)]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Days for shipment (scheduled)]"
+                      cachedDataType="r8"
+                      cachedName="Days for shipment (scheduled)"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Schedule_DayForShipment]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Days for shipment (scheduled)]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Late_delivery_risk]"
+                      cachedDataType="r8"
+                      cachedName="Late_delivery_risk"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[LateDeliveryRisk]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Late_delivery_risk]" />
+                    <inputColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].Columns[Order Zipcode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Order Zipcode"
+                      externalMetadataColumnId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_Zipcode]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order Zipcode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_ID]"
+                      dataType="i4"
+                      name="Order_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Cust_ID]"
+                      dataType="i4"
+                      name="Cust_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Store_ID]"
+                      dataType="i4"
+                      name="Store_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Market_ID]"
+                      dataType="i4"
+                      name="Market_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Payment_ID]"
+                      dataType="i4"
+                      name="Payment_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Delivery_Status_ID]"
+                      dataType="i4"
+                      name="Delivery_Status_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_State_ID]"
+                      dataType="i4"
+                      name="Order_State_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_Region_ID]"
+                      dataType="i4"
+                      name="Order_Region_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Ship_Mode_ID]"
+                      dataType="i4"
+                      name="Ship_Mode_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_City]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order_City" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_State]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order_State" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order_Country" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_Date]"
+                      dataType="dbTimeStamp"
+                      name="Order_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Shipping_Date]"
+                      dataType="dbTimeStamp"
+                      name="Shipping_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Real_DayForShipping]"
+                      dataType="i4"
+                      name="Real_DayForShipping" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Schedule_DayForShipment]"
+                      dataType="i4"
+                      name="Schedule_DayForShipment" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[LateDeliveryRisk]"
+                      dataType="i4"
+                      name="LateDeliveryRisk" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Order.Inputs[OLE DB Destination Input].ExternalColumns[Order_Zipcode]"
+                      dataType="i4"
+                      name="Order_Zipcode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Order\Order.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Order\Order.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Order\Order.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Order\Order.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Order\Order.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Order\Order.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Order\Supply-Chain-Order"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Supply-Chain-Order"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Order$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Order\Supply-Chain-Order.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order Id]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order Id]"
+                      name="Order Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Customer Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Customer Id]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Customer Id]"
+                      name="Customer Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Store#Store_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Store#Store_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Store#Store_ID]"
+                      name="Store#Store_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Market#1#Market_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Market#1#Market_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Market#1#Market_ID]"
+                      name="Market#1#Market_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Payment#Payment_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Payment#Payment_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Payment#Payment_ID]"
+                      name="Payment#Payment_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Delivery_Status#Delivery_Status_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Delivery_Status#Delivery_Status_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Delivery_Status#Delivery_Status_ID]"
+                      name="Delivery_Status#Delivery_Status_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order_Status#Order_Status_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order_Status#Order_Status_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order_Status#Order_Status_ID]"
+                      name="Order_Status#Order_Status_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order_Region#Order_Region_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order_Region#Order_Region_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order_Region#Order_Region_ID]"
+                      name="Order_Region#Order_Region_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Shipping_Mode#Ship_Mode_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Shipping_Mode#Ship_Mode_ID]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Shipping_Mode#Ship_Mode_ID]"
+                      name="Shipping_Mode#Ship_Mode_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order City]"
+                      length="255"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order City]"
+                      name="Order City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order State]"
+                      length="255"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order State]"
+                      name="Order State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order Country]"
+                      length="255"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order Country]"
+                      name="Order Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order Zipcode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order Zipcode]"
+                      length="255"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Order Zipcode]"
+                      name="Order Zipcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[order date (DateOrders)]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[order date (DateOrders)]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[order date (DateOrders)]"
+                      name="order date (DateOrders)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[shipping date (DateOrders)]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]"
+                      name="shipping date (DateOrders)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Late_delivery_risk]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Late_delivery_risk]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Late_delivery_risk]"
+                      name="Late_delivery_risk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Days for shipment (scheduled)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Days for shipment (scheduled)]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Days for shipment (scheduled)]"
+                      name="Days for shipment (scheduled)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Days for shipping (real)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Days for shipping (real)]"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].Columns[Days for shipping (real)]"
+                      name="Days for shipping (real)"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order Id]"
+                      dataType="r8"
+                      name="Order Id" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Customer Id]"
+                      dataType="r8"
+                      name="Customer Id" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Store#Store_ID]"
+                      dataType="r8"
+                      name="Store#Store_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Market#1#Market_ID]"
+                      dataType="r8"
+                      name="Market#1#Market_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Payment#Payment_ID]"
+                      dataType="r8"
+                      name="Payment#Payment_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Delivery_Status#Delivery_Status_ID]"
+                      dataType="r8"
+                      name="Delivery_Status#Delivery_Status_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order_Status#Order_Status_ID]"
+                      dataType="r8"
+                      name="Order_Status#Order_Status_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order_Region#Order_Region_ID]"
+                      dataType="r8"
+                      name="Order_Region#Order_Region_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Shipping_Mode#Ship_Mode_ID]"
+                      dataType="r8"
+                      name="Shipping_Mode#Ship_Mode_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order City]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order City" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order State]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order State" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Country" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Order Zipcode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Zipcode" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[order date (DateOrders)]"
+                      dataType="date"
+                      name="order date (DateOrders)" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[shipping date (DateOrders)]"
+                      dataType="date"
+                      name="shipping date (DateOrders)" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Late_delivery_risk]"
+                      dataType="r8"
+                      name="Late_delivery_risk" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Days for shipment (scheduled)]"
+                      dataType="r8"
+                      name="Days for shipment (scheduled)" />
+                    <externalMetadataColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output].ExternalColumns[Days for shipping (real)]"
+                      dataType="r8"
+                      name="Days for shipping (real)" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order Id]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order Id]"
+                      name="Order Id" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Customer Id]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Customer Id]"
+                      name="Customer Id" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Store#Store_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Store#Store_ID]"
+                      name="Store#Store_ID" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Market#1#Market_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Market#1#Market_ID]"
+                      name="Market#1#Market_ID" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Payment#Payment_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Payment#Payment_ID]"
+                      name="Payment#Payment_ID" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Delivery_Status#Delivery_Status_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Delivery_Status#Delivery_Status_ID]"
+                      name="Delivery_Status#Delivery_Status_ID" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order_Status#Order_Status_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order_Status#Order_Status_ID]"
+                      name="Order_Status#Order_Status_ID" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order_Region#Order_Region_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order_Region#Order_Region_ID]"
+                      name="Order_Region#Order_Region_ID" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Shipping_Mode#Ship_Mode_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Shipping_Mode#Ship_Mode_ID]"
+                      name="Shipping_Mode#Ship_Mode_ID" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order City]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order City]"
+                      name="Order City" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order State]"
+                      name="Order State" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order Country]"
+                      name="Order Country" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order Zipcode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Order Zipcode]"
+                      name="Order Zipcode" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[order date (DateOrders)]"
+                      dataType="date"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[order date (DateOrders)]"
+                      name="order date (DateOrders)" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[shipping date (DateOrders)]"
+                      dataType="date"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[shipping date (DateOrders)]"
+                      name="shipping date (DateOrders)" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Late_delivery_risk]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Late_delivery_risk]"
+                      name="Late_delivery_risk" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Days for shipment (scheduled)]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Days for shipment (scheduled)]"
+                      name="Days for shipment (scheduled)" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Days for shipping (real)]"
+                      dataType="r8"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[Days for shipping (real)]"
+                      name="Days for shipping (real)" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Order.Paths[Excel Source Output]"
+              endId="Package\Order\Order.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Order\Supply-Chain-Order.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Order_Item"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5c56cfd2-6b7b-4dd7-83e4-ea76e9644684}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Order_Item"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Order_Item\Order_Item"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Order_Item"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Order Item]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Order_Item\Order_Item.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  connectionManagerRefId="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].Columns[Order_ID]"
+                      cachedDataType="r8"
+                      cachedName="Order_ID"
+                      externalMetadataColumnId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Order_ID]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Order_ID]" />
+                    <inputColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].Columns[Product_ID]"
+                      cachedDataType="r8"
+                      cachedName="Product_ID"
+                      externalMetadataColumnId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Product_ID]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Product_ID]" />
+                    <inputColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].Columns[Discount]"
+                      cachedDataType="r8"
+                      cachedName="Discount"
+                      externalMetadataColumnId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].Columns[Total_Sales]"
+                      cachedDataType="r8"
+                      cachedName="Total_Sales"
+                      externalMetadataColumnId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Total_Sales]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Total_Sales]" />
+                    <inputColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].Columns[Order_Item_ID]"
+                      cachedDataType="r8"
+                      cachedName="Order_Item_ID"
+                      externalMetadataColumnId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[OrderItem_ID]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Order_Item_ID]" />
+                    <inputColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].Columns[ProfitPerOrder]"
+                      cachedDataType="r8"
+                      cachedName="ProfitPerOrder"
+                      externalMetadataColumnId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[PenifitPerOrder]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[ProfitPerOrder]" />
+                    <inputColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].Columns[Order_Item_Product_Price]"
+                      cachedDataType="r8"
+                      cachedName="Order_Item_Product_Price"
+                      externalMetadataColumnId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Order_Item_Product_Price]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Order_Item_Product_Price]" />
+                    <inputColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].Columns[Sales]"
+                      cachedDataType="r8"
+                      cachedName="Sales"
+                      externalMetadataColumnId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Sales]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Sales]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[OrderItem_ID]"
+                      dataType="i4"
+                      name="OrderItem_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Order_ID]"
+                      dataType="i4"
+                      name="Order_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Product_ID]"
+                      dataType="i4"
+                      name="Product_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      dataType="numeric"
+                      name="Discount"
+                      precision="5"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Total_Sales]"
+                      dataType="numeric"
+                      name="Total_Sales"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[PenifitPerOrder]"
+                      dataType="numeric"
+                      name="PenifitPerOrder"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Order_Item_Product_Price]"
+                      dataType="numeric"
+                      name="Order_Item_Product_Price"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input].ExternalColumns[Sales]"
+                      dataType="numeric"
+                      name="Sales"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Order_Item\Order_Item.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Order_Item\Order_Item.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Order_Item\Order_Item.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Order_Item\Order_Item.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Order_Item\Order_Item.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Order_Item\Supply-Chain-Order-Item"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Supply-Chain-Order-Item"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Order_Item$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Order_Item\Supply-Chain-Order-Item.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Order_Item_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Order_Item_ID]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Order_Item_ID]"
+                      name="Order_Item_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Order_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Order_ID]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Order_ID]"
+                      name="Order_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Product_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Product_ID]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Product_ID]"
+                      name="Product_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Order_Item_Product_Price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Order_Item_Product_Price]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Order_Item_Product_Price]"
+                      name="Order_Item_Product_Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Quantity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Sales]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Sales]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Sales]"
+                      name="Sales"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Discount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Discount]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Discount]"
+                      name="Discount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Total_Sales]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Total_Sales]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[Total_Sales]"
+                      name="Total_Sales"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[ProfitPerOrder]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[ProfitPerOrder]"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].Columns[ProfitPerOrder]"
+                      name="ProfitPerOrder"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Order_Item_ID]"
+                      dataType="r8"
+                      name="Order_Item_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Order_ID]"
+                      dataType="r8"
+                      name="Order_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Product_ID]"
+                      dataType="r8"
+                      name="Product_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Order_Item_Product_Price]"
+                      dataType="r8"
+                      name="Order_Item_Product_Price" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Sales]"
+                      dataType="r8"
+                      name="Sales" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Discount]"
+                      dataType="r8"
+                      name="Discount" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[Total_Sales]"
+                      dataType="r8"
+                      name="Total_Sales" />
+                    <externalMetadataColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output].ExternalColumns[ProfitPerOrder]"
+                      dataType="r8"
+                      name="ProfitPerOrder" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Order_Item_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Order_Item_ID]"
+                      name="Order_Item_ID" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Order_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Order_ID]"
+                      name="Order_ID" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Product_ID]"
+                      dataType="r8"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Product_ID]"
+                      name="Product_ID" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Order_Item_Product_Price]"
+                      dataType="r8"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Order_Item_Product_Price]"
+                      name="Order_Item_Product_Price" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      dataType="r8"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Sales]"
+                      dataType="r8"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Sales]"
+                      name="Sales" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Discount]"
+                      dataType="r8"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Discount]"
+                      name="Discount" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Total_Sales]"
+                      dataType="r8"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[Total_Sales]"
+                      name="Total_Sales" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[ProfitPerOrder]"
+                      dataType="r8"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[ProfitPerOrder]"
+                      name="ProfitPerOrder" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Order_Item.Paths[Excel Source Output]"
+              endId="Package\Order_Item\Order_Item.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Order_Item\Supply-Chain-Order-Item.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Product"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9626E5C7-E395-438C-8D1A-F89245C0E3B0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Product"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Product\Product"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Product"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Product\Product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  connectionManagerRefId="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Product\Product.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].Columns[Category_ID]"
+                      cachedDataType="r8"
+                      cachedName="Category_ID"
+                      externalMetadataColumnId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Category_ID]"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Category_ID]" />
+                    <inputColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].Columns[Product _ID]"
+                      cachedDataType="r8"
+                      cachedName="Product _ID"
+                      externalMetadataColumnId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Product_ID]"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Product _ID]" />
+                    <inputColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].Columns[Department_ID]"
+                      cachedDataType="r8"
+                      cachedName="Department_ID"
+                      externalMetadataColumnId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Dep_ID]"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Department_ID]" />
+                    <inputColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].Columns[Product_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product_Name"
+                      externalMetadataColumnId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Product_Name]" />
+                    <inputColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].Columns[Product_Price]"
+                      cachedDataType="r8"
+                      cachedName="Product_Price"
+                      externalMetadataColumnId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Product_Price]"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Product_Price]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Category_ID]"
+                      dataType="i4"
+                      name="Category_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Product_ID]"
+                      dataType="i4"
+                      name="Product_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Dep_ID]"
+                      dataType="i4"
+                      name="Dep_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Inputs[OLE DB Destination Input].ExternalColumns[Product_Price]"
+                      dataType="numeric"
+                      name="Product_Price"
+                      precision="7"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Product\Product.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Product\Product.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Supply-Chain-Product"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Supply-Chain-Product"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Product$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Product\Supply-Chain-Product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Category_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Category_ID]"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Category_ID]"
+                      name="Category_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Product _ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Product _ID]"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Product _ID]"
+                      name="Product _ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Department_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Department_ID]"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Department_ID]"
+                      name="Department_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Product_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Product_Name]"
+                      length="255"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Product_Name]"
+                      name="Product_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Product_Price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Product_Price]"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].Columns[Product_Price]"
+                      name="Product_Price"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Category_ID]"
+                      dataType="r8"
+                      name="Category_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Product _ID]"
+                      dataType="r8"
+                      name="Product _ID" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Department_ID]"
+                      dataType="r8"
+                      name="Department_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Product_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output].ExternalColumns[Product_Price]"
+                      dataType="r8"
+                      name="Product_Price" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Product _ID]"
+                      dataType="r8"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Product _ID]"
+                      name="Product _ID" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Category_ID]"
+                      dataType="r8"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Category_ID]"
+                      name="Category_ID" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Department_ID]"
+                      dataType="r8"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Department_ID]"
+                      name="Department_ID" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Product_Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Product_Name]"
+                      name="Product_Name" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Product_Price]"
+                      dataType="r8"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[Product_Price]"
+                      name="Product_Price" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Product.Paths[Excel Source Output]"
+              endId="Package\Product\Product.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Product\Supply-Chain-Product.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Store_Has_Department"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{31c0b53e-74bc-4533-a67f-ec6307941798}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Store_Has_Department"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Store_Has_Department\Store_Has_Department"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Store_Has_Department"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Store_Has_Department]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Store_Has_Department\Store_Has_Department.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  connectionManagerRefId="Package.ConnectionManagers[HARBSKIIIII.Supply Chain]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Store_Has_Department\Store_Has_Department.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Store_Has_Department\Store_Has_Department.Inputs[OLE DB Destination Input].Columns[Store_ID]"
+                      cachedDataType="r8"
+                      cachedName="Store_ID"
+                      externalMetadataColumnId="Package\Store_Has_Department\Store_Has_Department.Inputs[OLE DB Destination Input].ExternalColumns[Store_ID]"
+                      lineageId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].Columns[Store_ID]" />
+                    <inputColumn
+                      refId="Package\Store_Has_Department\Store_Has_Department.Inputs[OLE DB Destination Input].Columns[Department Id]"
+                      cachedDataType="r8"
+                      cachedName="Department Id"
+                      externalMetadataColumnId="Package\Store_Has_Department\Store_Has_Department.Inputs[OLE DB Destination Input].ExternalColumns[Dept_ID]"
+                      lineageId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].Columns[Department Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Store_Has_Department\Store_Has_Department.Inputs[OLE DB Destination Input].ExternalColumns[Store_ID]"
+                      dataType="i4"
+                      name="Store_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Store_Has_Department\Store_Has_Department.Inputs[OLE DB Destination Input].ExternalColumns[Dept_ID]"
+                      dataType="i4"
+                      name="Dept_ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Store_Has_Department\Store_Has_Department.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Store_Has_Department\Store_Has_Department.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Store_Has_Department\Store_Has_Department.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Store_Has_Department\Store_Has_Department.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Store_Has_Department\Store_Has_Department.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Store_Has_Department\Store_Has_Department.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Supply-Chain-Store-Has-Department"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Store_Has_Department$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].Columns[Store_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].ExternalColumns[Store_ID]"
+                      lineageId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].Columns[Store_ID]"
+                      name="Store_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].Columns[Department Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].ExternalColumns[Department Id]"
+                      lineageId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].Columns[Department Id]"
+                      name="Department Id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].ExternalColumns[Store_ID]"
+                      dataType="r8"
+                      name="Store_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output].ExternalColumns[Department Id]"
+                      dataType="r8"
+                      name="Department Id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Error Output].Columns[Store_ID]"
+                      dataType="r8"
+                      lineageId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Error Output].Columns[Store_ID]"
+                      name="Store_ID" />
+                    <outputColumn
+                      refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Error Output].Columns[Department Id]"
+                      dataType="r8"
+                      lineageId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Error Output].Columns[Department Id]"
+                      name="Department Id" />
+                    <outputColumn
+                      refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Store_Has_Department.Paths[Excel Source Output]"
+              endId="Package\Store_Has_Department\Store_Has_Department.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Store_Has_Department\Supply-Chain-Store-Has-Department.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FDDAB019-CA84-4543-8B3A-A2FB8F46549B}"
+      DTS:From="Package\Product"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Store_Has_Department" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{CEFCF99A-D51A-4990-974B-0990A4084E71}"
+      DTS:From="Package\Store_Has_Department"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Customer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{9228F366-8646-4EBC-84E8-03ECD01C6B7C}"
+      DTS:From="Package\Customer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Order" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{F6FCEA7E-F709-4EAB-85A5-2F6AD5EA406B}"
+      DTS:From="Package\Order"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Order_Item" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="114.4,41.6"
+          Id="Package\Product"
+          TopLeft="42.1428572325676,28.2941176222579" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Store_Has_Department"
+          TopLeft="197.142857562522,138.305882320767" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\Customer"
+          TopLeft="361.428572197958,21.20000015953" />
+        <NodeLayout
+          Size="104.8,41.6"
+          Id="Package\Order"
+          TopLeft="526.428572549199,134.27058838477" />
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\Order_Item"
+          TopLeft="687.85714432141,11.811765051754" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="99.3428572325676,69.8941176222579">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="161.800000329954,68.4117646985091"
+              Start="0,0"
+              End="161.800000329954,60.9117646985091">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.7006701370877" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.7006701370877"
+                    Point2="0,40.7006701370877"
+                    Point3="4,40.7006701370877" />
+                  <mssgle:LineSegment
+                    End="157.800000329954,40.7006701370877" />
+                  <mssgle:CubicBezierSegment
+                    Point1="157.800000329954,40.7006701370877"
+                    Point2="161.800000329954,40.7006701370877"
+                    Point3="161.800000329954,44.7006701370877" />
+                  <mssgle:LineSegment
+                    End="161.800000329954,60.9117646985091" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="321.142857562522,138.305882320767">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="82.6857146354359,-75.505882161237"
+              Start="0,0"
+              End="82.6857146354359,-68.005882161237">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-33.5472237427423" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-33.5472237427423"
+                    Point2="0,-37.5472237427423"
+                    Point3="4,-37.5472237427423" />
+                  <mssgle:LineSegment
+                    End="78.6857146354359,-37.5472237427423" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.6857146354359,-37.5472237427423"
+                    Point2="82.6857146354359,-37.5472237427423"
+                    Point3="82.6857146354359,-41.5472237427423" />
+                  <mssgle:LineSegment
+                    End="82.6857146354359,-68.005882161237" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="442.228572197958,62.80000015953">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="120.466667017908,71.47058822524"
+              Start="0,0"
+              End="120.466667017908,63.97058822524">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6369157624189" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6369157624189"
+                    Point2="0,35.6369157624189"
+                    Point3="4,35.6369157624189" />
+                  <mssgle:LineSegment
+                    End="116.466667017908,35.6369157624189" />
+                  <mssgle:CubicBezierSegment
+                    Point1="116.466667017908,35.6369157624189"
+                    Point2="120.466667017908,35.6369157624189"
+                    Point3="120.466667017908,39.6369157624189" />
+                  <mssgle:LineSegment
+                    End="120.466667017908,63.97058822524" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="594.961905882532,134.27058838477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="159.295238438878,-80.858823333016"
+              Start="0,0"
+              End="159.295238438878,-73.358823333016">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-29.0730826264366" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-29.0730826264366"
+                    Point2="0,-33.0730826264366"
+                    Point3="4,-33.0730826264366" />
+                  <mssgle:LineSegment
+                    End="155.295238438878,-33.0730826264366" />
+                  <mssgle:CubicBezierSegment
+                    Point1="155.295238438878,-33.0730826264366"
+                    Point2="159.295238438878,-33.0730826264366"
+                    Point3="159.295238438878,-37.0730826264366" />
+                  <mssgle:LineSegment
+                    End="159.295238438878,-73.358823333016" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Product">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="114.4,41.6"
+          Id="Package\Product\Product"
+          TopLeft="496.964286772192,132.888888772407" />
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\Product\Supply-Chain-Product"
+          TopLeft="160.892857485356,117.212418197912" />
+        <EdgeLayout
+          Id="Package\Product.Paths[Excel Source Output]"
+          TopLeft="340.892857485356,138.012418197912">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="156.071429286836,15.676470574495"
+              Start="0,0"
+              End="148.571429286836,15.676470574495">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="74.035714643418,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="74.035714643418,0"
+                    Point2="78.035714643418,0"
+                    Point3="78.035714643418,4" />
+                  <mssgle:LineSegment
+                    End="78.035714643418,11.676470574495" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.035714643418,11.676470574495"
+                    Point2="78.035714643418,15.676470574495"
+                    Point3="82.035714643418,15.676470574495" />
+                  <mssgle:LineSegment
+                    End="148.571429286836,15.676470574495" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Product\Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Product\Supply-Chain-Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Store_Has_Department">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="249.6,41.6"
+          Id="Package\Store_Has_Department\Supply-Chain-Store-Has-Department"
+          TopLeft="186.359888436814,133.406763521921" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Store_Has_Department\Store_Has_Department"
+          TopLeft="580.681316962094,157.950881063318" />
+        <EdgeLayout
+          Id="Package\Store_Has_Department.Paths[Excel Source Output]"
+          TopLeft="435.959888436814,154.206763521921">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="144.72142852528,24.544117541397"
+              Start="0,0"
+              End="137.22142852528,24.544117541397">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="68.36071426264,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68.36071426264,0"
+                    Point2="72.36071426264,0"
+                    Point3="72.36071426264,4" />
+                  <mssgle:LineSegment
+                    End="72.36071426264,20.544117541397" />
+                  <mssgle:CubicBezierSegment
+                    Point1="72.36071426264,20.544117541397"
+                    Point2="72.36071426264,24.544117541397"
+                    Point3="76.36071426264,24.544117541397" />
+                  <mssgle:LineSegment
+                    End="137.22142852528,24.544117541397" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Customer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Customer\Supply-Chain-Customer"
+          TopLeft="182.964284091808,122.247292334314" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\Customer\Customer"
+          TopLeft="541.035713050819,141.747292317222" />
+        <EdgeLayout
+          Id="Package\Customer.Paths[Excel Source Output]"
+          TopLeft="371.764284091808,143.047292334314">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="169.271428959011,19.499999982908"
+              Start="0,0"
+              End="161.771428959011,19.499999982908">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="80.6357144795055,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="80.6357144795055,0"
+                    Point2="84.6357144795055,0"
+                    Point3="84.6357144795055,4" />
+                  <mssgle:LineSegment
+                    End="84.6357144795055,15.499999982908" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84.6357144795055,15.499999982908"
+                    Point2="84.6357144795055,19.499999982908"
+                    Point3="88.6357144795055,19.499999982908" />
+                  <mssgle:LineSegment
+                    End="161.771428959011,19.499999982908" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Order">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Order\Supply-Chain-Order"
+          TopLeft="132.476189621249,142.4556982723" />
+        <NodeLayout
+          Size="104.8,41.6"
+          Id="Package\Order\Order"
+          TopLeft="474.79761892139,160.999815903104" />
+        <EdgeLayout
+          Id="Package\Order.Paths[Excel Source Output]"
+          TopLeft="302.876189621249,163.2556982723">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="171.921429300141,18.544117630804"
+              Start="0,0"
+              End="164.421429300141,18.544117630804">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="81.9607146500705,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81.9607146500705,0"
+                    Point2="85.9607146500705,0"
+                    Point3="85.9607146500705,4" />
+                  <mssgle:LineSegment
+                    End="85.9607146500705,14.544117630804" />
+                  <mssgle:CubicBezierSegment
+                    Point1="85.9607146500705,14.544117630804"
+                    Point2="85.9607146500705,18.544117630804"
+                    Point3="89.9607146500705,18.544117630804" />
+                  <mssgle:LineSegment
+                    End="164.421429300141,18.544117630804" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Order_Item">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\Order_Item\Supply-Chain-Order-Item"
+          TopLeft="182.678569810351,162.845615373739" />
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\Order_Item\Order_Item"
+          TopLeft="524.999999110492,181.389733004543" />
+        <EdgeLayout
+          Id="Package\Order_Item.Paths[Excel Source Output]"
+          TopLeft="379.478569810351,183.645615373739">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="145.521429300141,18.544117630804"
+              Start="0,0"
+              End="138.021429300141,18.544117630804">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="68.7607146500704,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68.7607146500704,0"
+                    Point2="72.7607146500704,0"
+                    Point3="72.7607146500704,4" />
+                  <mssgle:LineSegment
+                    End="72.7607146500704,14.544117630804" />
+                  <mssgle:CubicBezierSegment
+                    Point1="72.7607146500704,14.544117630804"
+                    Point2="72.7607146500704,18.544117630804"
+                    Point3="76.7607146500704,18.544117630804" />
+                  <mssgle:LineSegment
+                    End="138.021429300141,18.544117630804" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Order_Item\Order_Item">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
